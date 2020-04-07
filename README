@@ -1,0 +1,21 @@
+Steps to Auto Update Flows from NiFi Registry to Cluster
+
+Prerequisite: Python3
+Packages: nipyapi,json,ast,os,sys (All preconfigured with python3)
+
+** nipyapi is being installed during this process! No need to worry about installation **
+
+1. Go into registry/run.bash
+    1a. Changes these parameters
+        - nifiFailoverIP
+        - bastion_host
+        - account_name
+
+2. Go into registry/registryPullAutomation/registryAutomation.py
+    2a. Change these parameters in main function
+        - nipyapi.config.nifi_config.host
+        - nipyapi.config.registry_config.host
+
+3. Run run.bash
+    - cd /registry
+    - ./run.bash
