@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Eventually can pull from .ini
-nifiIP=10.10.4.51
+nifiIP=10.11.4.51
 bastion_host=bastion
 account_name=maintuser
 
