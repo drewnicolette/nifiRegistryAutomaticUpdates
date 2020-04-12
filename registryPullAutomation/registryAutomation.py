@@ -36,7 +36,7 @@ def convertToJson(buckets):
   return jsonBuckets
 
 #1. Checks to see if this is the primary cluster
-def checkIfPrimaryCluster():
+def isPrimaryCluster():
   root = nipyapi.canvas.get_root_pg_id()
   process_group = nipyapi.canvas.get_process_group(root, identifier_type='id')
   var = nipyapi.canvas.get_variable_registry(process_group)
@@ -132,8 +132,9 @@ if __name__ == '__main__':
   nipyapi.config.registry_config.host = 'http://localhost:18080/nifi-registry-api' #Common Registry
 
   #Checking if it's primary cluster
-  if checkIfPrimaryCluster():
-    sys.exit()
+  if isPrimaryCluster():
+    print("This is the primary cluster")
+    sys.exit(1)
 
   #Get registry Information
   buckets = nipyapi.versioning.list_registry_buckets()
