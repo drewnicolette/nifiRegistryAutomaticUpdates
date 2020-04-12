@@ -116,11 +116,13 @@ def getNewFlows(registryFlowInfoDict):
 def addNewFlows(newFlowsList):
   root = nipyapi.canvas.get_root_pg_id()
   registryId = getRegistryClientId()
-  location = (450,130)
+  x, y = 450, 130
   for newFlows in newFlowsList:
+    location = (x, y)
     bucket_id = newFlows[0]
     flow_id = newFlows[1]
     nipyapi.versioning.deploy_flow_version(root,location,bucket_id,flow_id,registryId)
+    x += 500
 
 #Main Function
 if __name__ == '__main__':
